@@ -1,8 +1,7 @@
 package com.efivestar.examplejava.controller;
 
-import com.efivestar.examplejava.common.ResultCode;
 import com.efivestar.examplejava.dto.ResultDto;
-import com.efivestar.examplejava.model.Brand;
+import com.efivestar.examplejava.dto.request.BrandQueryReqDto;
 import com.efivestar.examplejava.service.BrandService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,33 +21,24 @@ import javax.validation.Valid;
 public class BrandController {
     private final BrandService brandService;
 
-    private void raiseEvent() {
-        log.info(String.valueOf(System.currentTimeMillis()));
-    }
-
     @GetMapping
-    public ResultDto get(Brand brand, @PageableDefault(sort = "id") Pageable pageable) {
-        return brandService.query(brand, pageable);
+    public ResultDto get(BrandQueryReqDto dto, @PageableDefault(sort = "id") Pageable pageable) {
+        return brandService.query(dto, pageable);
     }
 
     @PostMapping
-    public ResultDto post(@Valid @RequestBody Brand brand) {
-        return brandService.insert(brand);
+    public ResultDto post(@Valid @RequestBody BrandQueryReqDto dto) {
+        return brandService.insert(dto);
     }
 
     @PutMapping
-    public ResultDto put(@RequestBody Brand brand) {
-        if(brand.getId()==null) {
-            return ResultDto.error(ResultCode.ARGUMENT_INVALID, "brand id must be provided for update operation");
-        }
-        return brandService.update(brand);
+    public ResultDto put(@RequestBody BrandQueryReqDto dto) {
+        return brandService.update(dto);
     }
 
     @DeleteMapping
-    public ResultDto delete(@RequestBody Brand brand) {
-        if(brand.getId()==null) {
-            return ResultDto.error(ResultCode.ARGUMENT_INVALID, "brand id must be provided for delete operation");
-        }
-        return brandService.delete(brand);
+    public ResultDto delete(@RequestBody BrandQueryReqDto dto) {
+        return brandService.delete(dto);
     }
+
 }

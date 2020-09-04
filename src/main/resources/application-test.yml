@@ -3,6 +3,3 @@ spring:
     url: jdbc:mysql://127.0.0.1/petshop?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: user
     password: password
-  jpa:
-    hibernate:
-      ddl-auto: update
