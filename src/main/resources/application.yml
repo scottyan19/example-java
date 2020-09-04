@@ -1,0 +1,11 @@
+server:
+  port: 1123
+  servlet:
+    encoding:
+      enabled: true
+      charset: utf-8
+spring:
+  application:
+    name: example-java
+  profiles:
+    active: dev
