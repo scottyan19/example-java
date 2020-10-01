@@ -4,7 +4,7 @@ import com.efivestar.examplejava.common.ResultCode;
 import com.efivestar.examplejava.dto.ResultDto;
 import com.efivestar.examplejava.dto.request.BrandQueryReqDto;
 import com.efivestar.examplejava.dto.response.BrandQueryResDto;
-import com.efivestar.examplejava.utils.JqBuilder;
+import com.efivestar.jeaf.persistence.jooq.JqBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageImpl;

@@ -1,8 +1,39 @@
 spring:
   datasource:
-    url: jdbc:h2:~/h2
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost/petshop?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: user1
+      password: ${env.password}
+      # 最大连接数
+      max-active: 100
+      initial-size: 1
+      min-idle: 1
+      # 程序向连接池请求连接的最大等待时间，单位是毫秒。-1不超时。
+      max-wait: 100
+      validation-query: select 1;
+      test-while-idle: true
+      # 获取连接时如果不检查，则可能会取到不可用的连接。
+      test-on-borrow: true
+      test-on-return: false
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      max-open-prepared-statements: 50
+      filters: mergeStat,wall,slf4j,config
+      removeAbandoned: true
+      # 当达到这个超时时间时，连接将被强制回收，单位是秒。
+      removeAbandonedTimeout: 7200
+      # 当druid强制回收连接后，是否将stack trace 记录到日志中
+      logAbandoned: true
+      connection-properties: config.decrypt=true;config.decrypt.key=${env.publicKey}
+      keep-alive: true
+env:
+  publicKey: xxx/EnEr2674NwnkDQ55UVq9LmYjq0StYShWGbbaZWXiWIargS968MNIsXnQUVexkrmXIwVHMCAwEAAQ==
+  password: xxx/7cfY1uqFZgfp3HCRHCxIWtOCM6+nQ==
+
+# cd .m2/repository/com/alibaba/druid/1.1.23
+# java -cp druid-1.1.23.jar com.alibaba.druid.filter.config.ConfigTools ${password}
+# copy public key and password and done.

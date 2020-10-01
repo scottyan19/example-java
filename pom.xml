@@ -16,9 +16,9 @@
 
     <properties>
         <java.version>11</java.version>
-        <jdbc.url>jdbc:mysql://127.0.0.1/petshop?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false</jdbc.url>
+        <jdbc.url>jdbc:mysql://172.26.31.215/petshop?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false</jdbc.url>
         <jdbc.username>user</jdbc.username>
-        <jdbc.password>password</jdbc.password>
+        <jdbc.password>Fivestar01</jdbc.password>
         <jooq.version>3.12.3</jooq.version>
     </properties>
 
@@ -64,6 +64,21 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.23</version>
+        </dependency>
+        <dependency>
+            <groupId>com.efivestar.jeaf</groupId>
+            <artifactId>jeaf-persistence</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.efivestar.jeaf</groupId>
+            <artifactId>jeaf-event</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
 
